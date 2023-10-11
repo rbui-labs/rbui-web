@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  scope '/docs' do
+    get 'link', to: 'docs#link', as: :docs_link
+    get 'typography', to: 'docs#typography', as: :docs_typography
+  end
+  root "pages#home"
 end
