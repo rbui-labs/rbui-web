@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
+import { format } from "date-fns"; // See https://date-fns.org/v2.30.0/docs/format for more options
 
 export default class extends Controller {
   static targets = ["calendar", "title"];
@@ -9,10 +10,14 @@ export default class extends Controller {
     },
     viewDate: {
       type: String,
-      // selectedDateValue || today
       default: new Date().toISOString().slice(0, 10)
+    },
+    format: {
+      type: String,
+      default: "yyyy-MM-dd" // See https://date-fns.org/v2.30.0/docs/format for more options
     }
   };
+  static outlets = ["input"]
 
   initialize() {
     this.updateCalendar() // Initial calendar render
@@ -41,6 +46,10 @@ export default class extends Controller {
 
   selectedDateValueChanged(value, prevValue) {
     this.updateCalendar()
+    this.inputOutlets.forEach(outlet => {
+      const formattedDate = this.formatDate(this.selectedDate())
+      outlet.setValue(formattedDate)
+    })
   }
 
   viewDateValueChanged(value, prevValue) {
@@ -60,13 +69,13 @@ export default class extends Controller {
   weekdays() {
     return `<thead class="">
         <tr class="flex">
-          <th scope="col" class="text-muted-foreground rounded-md w-8 font-normal text-[0.8rem]" aria-label="Sunday">Su</th>
           <th scope="col" class="text-muted-foreground rounded-md w-8 font-normal text-[0.8rem]" aria-label="Monday">Mo</th>
           <th scope="col" class="text-muted-foreground rounded-md w-8 font-normal text-[0.8rem]" aria-label="Tuesday">Tu</th>
           <th scope="col" class="text-muted-foreground rounded-md w-8 font-normal text-[0.8rem]" aria-label="Wednesday">We</th>
           <th scope="col" class="text-muted-foreground rounded-md w-8 font-normal text-[0.8rem]" aria-label="Thursday">Th</th>
           <th scope="col" class="text-muted-foreground rounded-md w-8 font-normal text-[0.8rem]" aria-label="Friday">Fr</th>
           <th scope="col" class="text-muted-foreground rounded-md w-8 font-normal text-[0.8rem]" aria-label="Saturday">Sa</th>
+          <th scope="col" class="text-muted-foreground rounded-md w-8 font-normal text-[0.8rem]" aria-label="Sunday">Su</th>
         </tr>
       </thead>`
   }
@@ -167,5 +176,9 @@ export default class extends Controller {
               return date;
           });
       })//.flat(Infinity);
+  }
+
+  formatDate(date) {
+    return format(date, this.formatValue);
   }
 }
