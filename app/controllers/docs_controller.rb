@@ -43,8 +43,16 @@ class DocsController < ApplicationController
     render Docs::CheckboxView.new
   end
 
+  def codeblock
+    render Docs::CodeblockView.new
+  end
+
   def collapsible
     render Docs::CollapsibleView.new
+  end
+
+  def command
+    render Docs::CommandView.new
   end
 
   def date_picker
@@ -77,6 +85,10 @@ class DocsController < ApplicationController
 
   def sheet
     render Docs::SheetView.new
+  end
+
+  def shortcut_key
+    render Docs::ShortcutKeyView.new
   end
 
   def tabs

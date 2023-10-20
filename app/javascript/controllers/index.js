@@ -13,8 +13,14 @@ application.register("alert-dialog", AlertDialogController)
 import CalendarController from "./calendar_controller"
 application.register("calendar", CalendarController)
 
+import CodeblockController from "./codeblock_controller"
+application.register("codeblock", CodeblockController)
+
 import CollapsibleController from "./collapsible_controller"
 application.register("collapsible", CollapsibleController)
+
+import CommandController from "./command_controller"
+application.register("command", CommandController)
 
 import DialogController from "./dialog_controller"
 application.register("dialog", DialogController)

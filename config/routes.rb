@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     get 'card', to: 'docs#card', as: :docs_card
     get 'calendar', to: 'docs#calendar', as: :docs_calendar
     get 'checkbox', to: 'docs#checkbox', as: :docs_checkbox
+    get 'codeblock', to: 'docs#codeblock', as: :docs_codeblock
     get 'collapsible', to: 'docs#collapsible', as: :docs_collapsible
+    get 'command', to: 'docs#command', as: :docs_command
     get 'date_picker', to: 'docs#date_picker', as: :docs_date_picker
     get 'dropdown_menu', to: 'docs#dropdown_menu', as: :docs_dropdown_menu
     get 'dialog', to: 'docs#dialog', as: :docs_dialog
@@ -19,6 +21,7 @@ Rails.application.routes.draw do
     get 'link', to: 'docs#link', as: :docs_link
     get 'popover', to: 'docs#popover', as: :docs_popover
     get 'sheet', to: 'docs#sheet', as: :docs_sheet
+    get 'shortcut_key', to: 'docs#shortcut_key', as: :docs_shortcut_key
     get 'tabs', to: 'docs#tabs', as: :docs_tabs
     get 'theme_toggle', to: 'docs#theme_toggle', as: :docs_theme_toggle
     get 'tooltip', to: 'docs#tooltip', as: :docs_tooltip
