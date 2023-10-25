@@ -40,6 +40,8 @@ class Docs::AvatarView < ApplicationView
           default_avatar(size: :xl, image: false)
         end
       end
+
+      render Docs::InstallationInstructionsComingSoon.new
     end
   end
 

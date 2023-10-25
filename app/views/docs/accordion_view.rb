@@ -30,6 +30,8 @@ class Docs::AccordionView < ApplicationView
           end
         end 
       end
+
+      render Docs::InstallationInstructionsComingSoon.new
     end
   end
 end

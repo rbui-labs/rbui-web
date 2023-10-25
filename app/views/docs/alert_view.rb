@@ -23,6 +23,8 @@ class Docs::AlertView < ApplicationView
           render AlertDescription.new { "Alert description" }
         end
       end
+
+      render Docs::InstallationInstructionsComingSoon.new
     end
   end
 

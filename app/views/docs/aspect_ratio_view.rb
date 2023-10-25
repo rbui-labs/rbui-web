@@ -63,6 +63,8 @@ class Docs::AspectRatioView < ApplicationView
           )
         end
       end
+
+      render Docs::InstallationInstructionsComingSoon.new
     end
   end
 end
