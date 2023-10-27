@@ -48,11 +48,11 @@ class Docs::TableView < ApplicationView
   def render_status_badge(status)
     case status.downcase
     when "active"
-      render Badge.new(variant: :primary) { status }
+      render Badge.new(variant: :lime, size: :sm) { status }
     when "inactive"
-      render Badge.new(variant: :destructive) { status }
+      render Badge.new(variant: :destructive, size: :sm) { status }
     when "pending"
-      render Badge.new(variant: :secondary) { status }
+      render Badge.new(variant: :amber, size: :sm) { status }
     end
   end
 end

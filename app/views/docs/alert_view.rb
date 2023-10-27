@@ -2,13 +2,13 @@
 
 class Docs::AlertView < ApplicationView
   def template
-    div(class: "max-w-2xl mx-auto w-full py-10 space-y-8") do
+    div(class: "max-w-2xl mx-auto w-full py-10 space-y-10") do
       div(class: 'space-y-2') do
         render Typography::H1.new { "Alert" }
         render Typography::P.new { "Displays a callout for user attention." }
       end
 
-      render Docs::VisualCodeExample.new(title: "Default", context: self) do
+      render Docs::VisualCodeExample.new(title: "Example", context: self) do
         <<~RUBY
           render Alert.new do
             icon
@@ -27,6 +27,8 @@ class Docs::AlertView < ApplicationView
           end
         RUBY
       end
+
+      render Docs::InstallationInstructionsComingSoon.new
     end
   end
 
