@@ -1,4 +1,8 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: ENV["MAILER_SENDER"]
   layout "mailer"
+
+  def self.template_path
+    "mailers/#{name.underscore}"
+  end
 end

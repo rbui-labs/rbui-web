@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class DocsController < ApplicationController
-  layout -> { ApplicationLayout }
+  layout -> { DocsLayout }
+  skip_before_action :authenticate_user!
 
   def accordion
     render Docs::AccordionView.new
