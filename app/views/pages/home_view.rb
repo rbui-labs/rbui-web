@@ -6,12 +6,12 @@ class Pages::HomeView < ApplicationView
       banner.cta do
         render PhlexUI::Link.new(variant: :outline, href: helpers.docs_accordion_path, class: 'text-center justify-center') { "Browse Components" }
         render PhlexUI::Link.new(variant: :primary, href: helpers.root_path(anchor: :pricing), class: 'text-center justify-center') do
-          plain "Get Early Access"
+          plain "Get all access"
           svg(
             xmlns: "http://www.w3.org/2000/svg",
             viewbox: "0 0 20 20",
             fill: "currentColor",
-            class: "w-5 h-5 ml-1"
+            class: "w-5 h-5 ml-1 -mr-1"
           ) do |s|
             s.path(
               fill_rule: "evenodd",
@@ -187,10 +187,10 @@ class Pages::HomeView < ApplicationView
         end
       end
       div(class: 'relative z-0 h-72 rotate-180 -mt-56 -mr-px') do
-        render Shared::GridPattern.new(spacing: :xs)
+        render Shared::GridPattern.new
       end
       div(class: 'relative h-72') do
-        render Shared::GridPattern.new(spacing: :xs)
+        render Shared::GridPattern.new
       end
       div(class: 'relative') do
         div(id: :pricing, class: 'block absolute -top-24 invisible')

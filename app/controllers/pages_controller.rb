@@ -7,4 +7,12 @@ class PagesController < ApplicationController
   def home
     render Pages::HomeView.new
   end
+
+  def license
+    render Pages::LicenseView.new
+  end
+
+  def support
+    render Pages::SupportView.new
+  end
 end

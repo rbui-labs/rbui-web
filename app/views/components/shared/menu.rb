@@ -3,23 +3,6 @@
 class Shared::Menu < ApplicationComponent
     def template
         div(class: 'pb-4') do
-            # ACCOUNT DETAILS
-            div(class: 'md:hidden') do
-                h4(class: 'mb-1 mt-2 rounded-md px-2 py-1 text-sm font-semibold flex items-center gap-x-2') do
-                    plain "Account"
-                end
-                div(class: 'grid grid-flow-row auto-rows-max text-sm') do
-                    if helpers.session[:user_id]
-                        a(href: helpers.signin_path, data: { turbo_method: :delete }, class: 'group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:underline text-muted-foreground') do
-                            span(class: 'flex items-center gap-x-1') { "Sign out" }
-                        end
-                    else
-                        a(href: helpers.new_signin_path, class: 'group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:underline text-muted-foreground') do
-                            span(class: 'flex items-center gap-x-1') { "Sign in" }
-                        end
-                    end
-                end
-            end
             # COMPONENTS
             h4(class: 'mb-1 mt-4 md:mt-0 rounded-md px-2 py-1 text-sm font-semibold flex items-center gap-x-2') do
                 plain "Components"
@@ -125,7 +108,7 @@ class Shared::Menu < ApplicationComponent
         return a(href: component[:path], class: tokens('group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:underline', -> { current_path } => "text-foreground font-medium", -> { !current_path } => "text-muted-foreground")) do
             span(class: 'flex items-center gap-x-1') do
                 span { component[:name] }
-                premium_status(component) if component[:premium]
+                premium_status(component) if show_premium_badge?(component)
             end
         end
     end
@@ -146,5 +129,11 @@ class Shared::Menu < ApplicationComponent
                 )
             end
         end
+    end
+
+    def show_premium_badge?(component)
+        return false unless component[:premium]
+        return true if current_user.nil?
+        current_user.not_subscribed?
     end
 end
