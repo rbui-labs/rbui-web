@@ -5,7 +5,9 @@ class Docs::CardView < ApplicationView
     div(class: "max-w-2xl mx-auto w-full py-10 space-y-10") do
       render Docs::Header.new(title: "Card", description: "Displays a card with header, content, and footer.")
 
-      render Docs::VisualCodeExample.new(title: "Example", context: self) do
+      render PhlexUI::Typography::H2.new { "Usage" }
+
+      render Docs::VisualCodeExample.new(title: "Card with image", context: self) do
         <<~RUBY
           render PhlexUI::Card.new(class: 'w-96') do
             render PhlexUI::Card::Header.new do
@@ -30,7 +32,7 @@ class Docs::CardView < ApplicationView
         RUBY
       end
 
-      render Docs::VisualCodeExample.new(title: "Example", context: self) do
+      render Docs::VisualCodeExample.new(title: "Card with full-width image", context: self) do
         <<~RUBY
           render PhlexUI::Card.new(class: 'w-96 overflow-hidden') do
             render PhlexUI::AspectRatio.new(aspect_ratio: "16/9", class: "border-b") do
@@ -52,7 +54,7 @@ class Docs::CardView < ApplicationView
         RUBY
       end
 
-      render Docs::VisualCodeExample.new(title: "Example", context: self) do
+      render Docs::VisualCodeExample.new(title: "Account balance", context: self) do
         <<~RUBY
           render PhlexUI::Card.new(class: 'w-96 overflow-hidden') do
             render PhlexUI::Card::Header.new do
@@ -71,8 +73,21 @@ class Docs::CardView < ApplicationView
         RUBY
       end
 
-      render Docs::InstallationInstructionsComingSoon.new
+      render Docs::ComponentsTable.new(components)
     end
+  end
+
+  private
+
+  def components
+    [
+      Docs::ComponentStruct.new(name: "PhlexUI::Card", source: "https://github.com/PhlexUI/phlex_ui/blob/main/lib/phlex_ui/card.rb", built_using: :phlex),
+      Docs::ComponentStruct.new(name: "PhlexUI::Card::Header", source: "https://github.com/PhlexUI/phlex_ui/blob/main/lib/phlex_ui/card/header.rb", built_using: :phlex),
+      Docs::ComponentStruct.new(name: "PhlexUI::Card::Content", source: "https://github.com/PhlexUI/phlex_ui/blob/main/lib/phlex_ui/card/content.rb", built_using: :phlex),
+      Docs::ComponentStruct.new(name: "PhlexUI::Card::Footer", source: "https://github.com/PhlexUI/phlex_ui/blob/main/lib/phlex_ui/card/footer.rb", built_using: :phlex),
+      Docs::ComponentStruct.new(name: "PhlexUI::Card::Title", source: "https://github.com/PhlexUI/phlex_ui/blob/main/lib/phlex_ui/card/title.rb", built_using: :phlex),
+      Docs::ComponentStruct.new(name: "PhlexUI::Card::Description", source: "https://github.com/PhlexUI/phlex_ui/blob/main/lib/phlex_ui/card/description.rb", built_using: :phlex),
+    ]
   end
 
   def arrow_icon(classes: nil)

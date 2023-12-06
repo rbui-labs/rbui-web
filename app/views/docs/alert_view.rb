@@ -5,12 +5,14 @@ class Docs::AlertView < ApplicationView
     div(class: "max-w-2xl mx-auto w-full py-10 space-y-10") do
       render Docs::Header.new(title: "Alert", description: "Displays a callout for user attention.")
 
+      render PhlexUI::Typography::H2.new { "Usage" }
+
       render Docs::VisualCodeExample.new(title: "Example", context: self) do
         <<~RUBY
           render PhlexUI::Alert.new do
             rocket_icon
             render PhlexUI::Alert::Title.new { "Pro tip" }
-            render PhlexUI::Alert::Description.new { "With a component library you'll ship faster." }
+            render PhlexUI::Alert::Description.new { "With PhlexUI you'll ship faster." }
           end
         RUBY
       end
@@ -54,8 +56,18 @@ class Docs::AlertView < ApplicationView
         RUBY
       end
 
-      render Docs::InstallationInstructionsComingSoon.new
+      render Docs::ComponentsTable.new(components)
     end
+  end
+
+  private
+
+  def components
+    [
+      Docs::ComponentStruct.new(name: "PhlexUI::Alert", source: "https://github.com/PhlexUI/phlex_ui/blob/main/lib/phlex_ui/alert.rb", built_using: :phlex),
+      Docs::ComponentStruct.new(name: "PhlexUI::Alert::Title", source: "https://github.com/PhlexUI/phlex_ui/blob/main/lib/phlex_ui/alert/title.rb", built_using: :phlex),
+      Docs::ComponentStruct.new(name: "PhlexUI::Alert::Description", source: "https://github.com/PhlexUI/phlex_ui/blob/main/lib/phlex_ui/alert/description.rb", built_using: :phlex),
+    ]
   end
 
   def rocket_icon
