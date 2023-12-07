@@ -18,9 +18,9 @@ class SigninsController < ApplicationController
     end
 
     def destroy
-        reset_session_and_current_user
-        flash[:notice] = "Your account has been successfully logged out."
-        redirect_back fallback_location: root_path
+        reset_session
+        flash[:notice] = "You have successfully logged out."
+        redirect_to root_path
     end
 
     def check_your_email
@@ -30,20 +30,13 @@ class SigninsController < ApplicationController
     def authenticate
         result = EmailAuth::ValidatesLoginAttempt.new.validate(params[:token])
         if result.success?
-            reset_session_and_current_user
+            reset_session
             session[:user_id] = result.user.id
             flash[:notice] = "Welcome, #{result.user.email}!"
-            redirect_to params[:redirect_path], allow_other_host: true
+            redirect_to params[:redirect_path]
         else
-            flash[:error] = "We weren't able to log you in with that link. Try again?"
+            flash[:alert] = "We weren't able to log you in with that link. Try again?"
             redirect_to new_signin_path(redirect_path: params[:redirect_path])
         end
-    end
-
-    private
-
-    def reset_session_and_current_user
-        reset_session
-        @current_user = nil
     end
 end
