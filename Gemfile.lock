@@ -116,6 +116,8 @@ GEM
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
+    faraday-retry (2.2.0)
+      faraday (~> 2.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -226,6 +228,7 @@ GEM
     reline (0.4.1)
       io-console (~> 0.5)
     rexml (3.2.6)
+    rollbar (3.4.2)
     rouge (4.2.0)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
@@ -278,6 +281,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   dotenv-rails
+  faraday-retry (~> 2.0)
   jbuilder
   jsbundling-rails
   letter_opener
@@ -290,6 +294,7 @@ DEPENDENCIES
   rack-www
   rails (~> 7.0.8)
   redis (~> 4.0)
+  rollbar
   selenium-webdriver
   sprockets-rails
   stimulus-rails

@@ -80,7 +80,9 @@ gem 'stripe'
 gem "letter_opener", group: :development
 gem 'postmark-rails' # used in production
 gem "octokit", "~> 5.0"
+gem "faraday-retry", "~> 2.0" # used for API calls that were failing in octokit gem
 gem 'rack-www' # used to redirect www to non-www subdomain
+gem 'rollbar'
 
 gem "phlex-rails"
 gem "phlex_ui_pro", "~> 0.1.2", source: 'https://phlexui.fury.site/gem/'
