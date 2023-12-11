@@ -71,7 +71,8 @@ class Shared::Menu < ApplicationComponent
 
     def installation_links
         [
-            { name: "Rails", path: helpers.docs_installation_rails_path },
+            { name: "Rails - JS Bundler", path: helpers.docs_installation_rails_bundler_path },
+            { name: "Rails - Importmaps", path: helpers.docs_installation_rails_importmaps_path },
         ]
     end
 

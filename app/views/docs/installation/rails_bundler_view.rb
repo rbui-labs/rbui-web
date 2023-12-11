@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Docs::Installation::RailsView < ApplicationView
+class Docs::Installation::RailsBundlerView < ApplicationView
   def initialize
     @phlex_rails_link = "https://www.phlex.fun/rails/"
     @phlex_ui_pro_private_key = ENV['BUNDLE_PHLEXUI__FURY__SITE']
@@ -8,14 +8,17 @@ class Docs::Installation::RailsView < ApplicationView
 
   def template
     div(class: "max-w-2xl mx-auto w-full py-10 space-y-10") do
-      render Docs::Header.new(title: "Rails", description: "How to install PhlexUI within a Rails app.", pre_release_only: true)
+      render Docs::Header.new(title: "Rails - JS Bundler", description: "How to install PhlexUI within a Rails app that employs JS bundling.", pre_release_only: true)
 
       render PhlexUI::Typography::H2.new(class: '!text-2xl pb-4 border-b') { "Creating a Rails app" }
       render Steps::Builder.new do |steps|
         steps.add_step do
           step_container do
             render PhlexUI::Typography::Large.new { "Generate a new Rails application" }
-            render PhlexUI::Typography::P.new { "In case you don't have a Rails application set up yet, let's start by generating one." }
+            render PhlexUI::Typography::P.new do
+              plain "In case you don't have a Rails application set up yet, let's start by generating one. The demo uses esbuild, however feel free to change esbuild to use bun, webpack or rollup.js. "
+              render PhlexUI::Typography::InlineLink.new(href: "https://guides.rubyonrails.org/working_with_javascript_in_rails.html#adding-npm-packages-with-javascript-bundlers") { "Read more about JS bundlers in Rails here." }
+            end
             code = <<~CODE 
                 rails new CHANGE_TO_NAME_OF_APP --css=tailwind --javascript=esbuild
               CODE
@@ -95,32 +98,7 @@ class Docs::Installation::RailsView < ApplicationView
 
       # JS INSTALLATION
       render PhlexUI::Typography::H2.new(class: '!text-2xl pb-4 border-b') { "Install JS" }
-      render Steps::Builder.new do |steps|
-        # STEP 1
-        steps.add_step do
-          step_container do
-            render PhlexUI::Typography::Large.new { "Install PhlexUI package" }
-            render PhlexUI::Tabs.new(default: free_or_pro) do
-              render PhlexUI::Tabs::List.new do
-                render PhlexUI::Tabs::Trigger.new(value: "free", class: 'w-24') { "Free" }
-                render PhlexUI::Tabs::Trigger.new(value: "pro", class: 'w-24') { "Pro" }
-              end
-              render PhlexUI::Card.new(class: 'p-4 md:p-6 mt-4 shadow-none') do
-                render PhlexUI::Tabs::Content.new(value: "free", class: 'space-y-4 !mt-0') do
-                  phlex_ui_js_installation("free")
-                end
-                render PhlexUI::Tabs::Content.new(value: "pro", class: 'space-y-4 !mt-0') do
-                  if Current.user_subscribed?
-                    phlex_ui_js_installation("pro")
-                  else
-                    upgrade_to_pro
-                  end
-                end
-              end
-            end
-          end
-        end
-      end
+      js_installation
 
       # STYLE INSTALLATION
       render PhlexUI::Typography::H2.new(class: '!text-2xl pb-4 border-b') { "Install Styles" }
@@ -221,59 +199,33 @@ class Docs::Installation::RailsView < ApplicationView
     end
   end
 
-  def phlex_ui_js_installation(plan)
-    case plan
-    when "free"
-      render PhlexUI::Typography::P.new { "Run the following in the terminal to install PhlexUI JS package" }
-      code = <<~CODE 
-          yarn add phlex_ui --registry https://npm-proxy.fury.io/phlexui/
-        CODE
-      render PhlexUI::Codeblock.new(code, syntax: :javascript)
-      render PhlexUI::Typography::P.new do
-        plain "Import the package in your "
-        render PhlexUI::Typography::InlineCode.new(class: 'whitespace-nowrap') { "app/javascript/application.js" }
-        plain " file"
+  def js_installation
+    render Steps::Builder.new do |steps|
+      # STEP 1
+      steps.add_step do
+        step_container do
+          render PhlexUI::Typography::Large.new { "Install package" }
+          render PhlexUI::Typography::P.new { "Run the following in the terminal to install PhlexUI JS package" }
+          code = <<~CODE 
+              bin/importmap pin phlex_ui
+            CODE
+          render PhlexUI::Codeblock.new(code, syntax: :javascript)
+        end
       end
-      code = <<~CODE
-          import 'phlex_ui';
-        CODE
-      render PhlexUI::Codeblock.new(code, syntax: :javascript)
-    when "pro"
-      render PhlexUI::Typography::P.new do
-        plain "First we must tell yarn where to source this package from. So let's create a "
-        render PhlexUI::Typography::InlineCode.new(class: 'whitespace-nowrap') { ".npmrc" }
-        plain " file"
+
+      # STEP 2
+      steps.add_step do
+        render PhlexUI::Typography::Large.new { "Import package" }
+        render PhlexUI::Typography::P.new do
+          plain "Import the package in your "
+          render PhlexUI::Typography::InlineCode.new(class: 'whitespace-nowrap') { "app/javascript/application.js" }
+          plain " file"
+        end
+        code = <<~CODE
+            import 'phlex_ui';
+          CODE
+        render PhlexUI::Codeblock.new(code, syntax: :javascript)
       end
-      code = <<~CODE
-          touch .npmrc
-        CODE
-      render PhlexUI::Codeblock.new(code, syntax: :javascript)
-      render PhlexUI::Typography::P.new do
-        plain "In the "
-        render PhlexUI::Typography::InlineCode.new(class: 'whitespace-nowrap') { ".npmrc" }
-        plain " file, let's add the following code to tell yarn where to source the package from. We will also tell yarn to use our license key for authentication"
-      end
-      code = <<~CODE
-          always-auth=true
-          registry=https://npm-proxy.fury.io/phlexui/
-          //npm-proxy.fury.io/phlexui/:_authToken=${BUNDLE_PHLEXUI__FURY__SITE}
-        CODE
-      render PhlexUI::Codeblock.new(code, syntax: :javascript)
-      render PhlexUI::Typography::P.new { "Now, install PhlexUI JS package by running this code in the terminal" }
-      code = <<~CODE 
-          yarn add phlex_ui_pro
-        CODE
-      render PhlexUI::Codeblock.new(code, syntax: :javascript)
-      render PhlexUI::Typography::P.new do
-        plain "Import the package in your "
-        render PhlexUI::Typography::InlineCode.new(class: 'whitespace-nowrap') { "app/javascript/application.js" }
-        plain " file"
-      end
-      code = <<~CODE
-          import 'phlex_ui_pro';
-        CODE
-      render PhlexUI::Codeblock.new(code, syntax: :javascript)
-      render PhlexUI::Typography::P.new { "Note, this will import all Stimulus controllers for both free and pro versions" }
     end
   end
 
