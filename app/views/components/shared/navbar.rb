@@ -2,8 +2,7 @@
 
 class Shared::Navbar < ApplicationComponent
   def template
-    access_github_banner if Current.user_subscribed? && Current.user&.github_username.blank?
-    header(class: 'supports-backdrop-blur:bg-background/60 sticky top-0 z-50 w-full border-b bg-background/60 backdrop-blur-2xl backdrop-saturate-200') do
+    header(class: 'supports-backdrop-blur:bg-background/80 sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-2xl backdrop-saturate-200') do
       div(class: 'px-2 sm:px-4 sm:container flex h-14 items-center justify-between') do
         div(class: 'mr-4 flex items-center') do
           render Shared::MobileMenu.new(class: 'md:hidden')
@@ -107,29 +106,6 @@ class Shared::Navbar < ApplicationComponent
   def github_link
     render PhlexUI::Link.new(href: ENV['PHLEXUI_GITHUB_LINK'], variant: :ghost, icon: true) do
       github_icon
-    end
-  end
-
-  def access_github_banner
-    div(
-      class:
-        "flex justify-center sm:items-center gap-x-2 px-6 py-2 sm:px-3.5 bg-gradient-to-r from-pink-100 dark:from-pink-200 from-10% via-rose-200 dark:via-rose-600 via-30% to-amber-100 dark:to-amber-300 to-90% saturate-200 dark:saturate-100 shadow-inner",
-    ) do
-      div(class: "shrink-0 hidden sm:inline-block") do
-        github_icon
-      end
-      p(class: "text-sm leading-6") do
-        a(href: helpers.account_path(anchor: 'github_access')) do
-          strong(class: "font-semibold") { "Update GitHub username" }
-          svg(
-            viewbox: "0 0 2 2",
-            class: "mx-2 inline h-0.5 w-0.5 fill-current",
-            aria_hidden: "true"
-          ) { |s| s.circle(cx: "1", cy: "1", r: "1") }
-          plain "to get access to the private repository "
-          span(aria_hidden: "true") { "→" }
-        end
-      end
     end
   end
 
