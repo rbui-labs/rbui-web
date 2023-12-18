@@ -4,5 +4,11 @@
 
 import { application } from "./application"
 
+import ChartController from "./chart_controller"
+application.register("chart", ChartController)
+
+import ColorThemeController from "./color_theme_controller"
+application.register("color-theme", ColorThemeController)
+
 import LottieController from "./lottie_controller"
 application.register("lottie", LottieController)
