@@ -43,7 +43,7 @@ module Themes
     def color_swatch_icon
       svg(
         xmlns: "http://www.w3.org/2000/svg",
-        fill: "currentColor",
+        fill: "#000000",
         viewbox: "0 0 256 256",
         class: 'w-5 h-5 shrink-0 mr-2 -ml-1'
       ) do |s|

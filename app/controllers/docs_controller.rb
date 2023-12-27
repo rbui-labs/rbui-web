@@ -76,10 +76,6 @@ class DocsController < ApplicationController
     render Docs::CalendarView.new
   end
 
-  def chart
-    render Docs::ChartView.new
-  end
-
   def checkbox
     render Docs::CheckboxView.new
   end
