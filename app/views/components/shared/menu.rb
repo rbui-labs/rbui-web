@@ -13,21 +13,21 @@ class Shared::Menu < ApplicationComponent
               main_link("Twitter", ENV['PHLEXUI_TWITTER_LINK'])
             end
             if Current.user_subscribed?
-                # GETTING STARTED
-                h4(class: 'mb-1 mt-4 rounded-md px-2 py-1 text-sm font-semibold') { "Getting Started" }
-                div(class: 'grid grid-flow-row auto-rows-max text-sm') do
-                    getting_started_links.each do |getting_started|
-                        menu_link(getting_started)
-                    end
+              # GETTING STARTED
+              h4(class: 'mb-1 mt-4 rounded-md px-2 py-1 text-sm font-semibold') { "Getting Started" }
+              div(class: 'grid grid-flow-row auto-rows-max text-sm') do
+                getting_started_links.each do |getting_started|
+                  menu_link(getting_started)
                 end
+              end
 
-                # INSTALLATION
-                h4(class: 'mb-1 mt-4 rounded-md px-2 py-1 text-sm font-semibold') { "Installation" }
-                div(class: 'grid grid-flow-row auto-rows-max text-sm') do
-                    installation_links.each do |installation|
-                        menu_link(installation)
-                    end
+              # INSTALLATION
+              h4(class: 'mb-1 mt-4 rounded-md px-2 py-1 text-sm font-semibold') { "Installation" }
+              div(class: 'grid grid-flow-row auto-rows-max text-sm') do
+                installation_links.each do |installation|
+                  menu_link(installation)
                 end
+              end
             end
 
             # COMPONENTS
@@ -59,6 +59,7 @@ class Shared::Menu < ApplicationComponent
                     )
                 end
             end
+
             div(class: 'grid grid-flow-row auto-rows-max text-sm') do
                 components_coming_soon.each do |component|
                     menu_link(component)
@@ -96,7 +97,7 @@ class Shared::Menu < ApplicationComponent
             { name: "Button", path: helpers.docs_button_path, premium: false },
             { name: "Card", path: helpers.docs_card_path, premium: false },
             { name: "Calendar", path: helpers.docs_calendar_path, premium: true },
-            { name: "Chart", path: helpers.docs_chart_path, premium: false },
+            # { name: "Chart", path: helpers.docs_chart_path, premium: false, badge: "New" },
             { name: "Checkbox", path: helpers.docs_checkbox_path, premium: false },
             { name: "Codeblock", path: helpers.docs_codeblock_path, premium: false },
             { name: "Collapsible", path: helpers.docs_collapsible_path, premium: false },
@@ -109,7 +110,7 @@ class Shared::Menu < ApplicationComponent
             { name: "Hover Card", path: helpers.docs_hover_card_path, premium: false },
             { name: "Link", path: helpers.docs_link_path, premium: false },
             { name: "Popover", path: helpers.docs_popover_path, premium: false },
-            { name: "Select", path: helpers.docs_select_path, premium: false, badge: "New" },
+            # { name: "Select", path: helpers.docs_select_path, premium: false, badge: "New" },
             { name: "Sheet", path: helpers.docs_sheet_path, premium: true },
             { name: "Shortcut Key", path: helpers.docs_shortcut_key_path, premium: false },
             { name: "Table", path: helpers.docs_table_path, premium: false },
@@ -124,6 +125,7 @@ class Shared::Menu < ApplicationComponent
         [
             { name: "Autosave", path: '#', premium: false },
             { name: "Carousel", path: '#', premium: true },
+            { name: "Chart", path: '#', premium: false },
             { name: "Clipboard", path: '#', premium: false },
             { name: "Color Picker", path: '#', premium: true },
             { name: "Combobox", path: '#', premium: true },
@@ -138,6 +140,7 @@ class Shared::Menu < ApplicationComponent
             { name: "Read more", path: '#', premium: false },
             { name: "Rich text editor", path: '#', premium: true },
             { name: "Scroll Area", path: '#', premium: false },
+            { name: "Select", path: '#', premium: false },
             { name: "Separator", path: '#', premium: false },
             { name: "Skeleton Loader", path: '#', premium: false },
             { name: "Slider", path: '#', premium: false },
