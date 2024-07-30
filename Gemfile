@@ -24,7 +24,6 @@ gem "lookbook", "2.3.2"
 
 gem "lucide-rails", "0.4.0"
 
-# # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
