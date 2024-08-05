@@ -77,3 +77,4 @@ gem "phlex_ui", github: "PhlexUI/phlex_ui", branch: "v1"
 # gem "phlex_ui", path: "../phlex_ui"
 
 gem "dockerfile-rails", ">= 1.6", group: :development
+gem "pry"
