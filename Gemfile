@@ -64,6 +64,7 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
   gem "standard"
+  gem "dockerfile-rails", ">= 1.6"
 end
 
 group :test do
@@ -76,5 +77,4 @@ gem "phlex-rails"
 gem "phlex_ui", github: "PhlexUI/phlex_ui", branch: "v1"
 # gem "phlex_ui", path: "../phlex_ui"
 
-gem "dockerfile-rails", ">= 1.6", group: :development
 gem "pry"
