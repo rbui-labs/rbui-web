@@ -26,7 +26,7 @@ module PhlexUi
               end
 
               SheetFooter do
-                Button(variant: :outline, data: {action: "click->dismissable#dismiss"}) { "Cancel" }
+                Button(variant: :outline, data: {action: "click->rbui--sheet-content#close"}) { "Cancel" }
                 Button(type: "submit") { "Save" }
               end
             end
