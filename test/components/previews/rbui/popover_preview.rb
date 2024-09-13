@@ -2,7 +2,7 @@
 
 # rubocop:disable Layout/LineLength
 
-module PhlexUi
+module Rbui
   class PopoverPreview < Lookbook::Preview
     # Default Popover
     # ---------------

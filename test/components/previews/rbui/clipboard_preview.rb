@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module PhlexUi
+module Rbui
   class ClipboardPreview < Lookbook::Preview
     # Default Clipboard
     # ---------------
