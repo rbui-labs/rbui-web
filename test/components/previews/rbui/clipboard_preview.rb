@@ -6,12 +6,12 @@ module RBUI
     # ---------------
     def default
       render(TestView.new) do
-        Clipboard(success: "Copiado!", error: "Falha ao copiar!", class: "relative") do
-          ClipboardSource(class: "hidden") { span { "Nascer herdeiro!!!" } }
+        Clipboard(success: "Copied!", error: "Copy failed!", class: "relative", options: {placement: "top"}) do
+          ClipboardSource(class: "hidden") { span { "Born rich!!!" } }
 
           ClipboardTrigger do
             Link(href: "#", class: "gap-1") do
-              TypographyP(size: :small, class: "text-primary") { "Copiar segredo do sucesso!!!" }
+              TypographyP(size: :small, class: "text-primary") { "Copy the secret of success!!!" }
             end
           end
         end
