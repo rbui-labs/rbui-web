@@ -2,7 +2,7 @@
 
 # rubocop:disable Layout/LineLength
 
-module PhlexUi
+module RBUI
   class DropdownMenuPreview < Lookbook::Preview
     # Default DropdownMenu
     # ---------------
