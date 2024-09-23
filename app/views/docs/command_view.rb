@@ -7,6 +7,33 @@ class Docs::CommandView < ApplicationView
 
       TypographyH2 { "Usage" }
 
+      render Docs::VisualCodeExample.new(title: "Command", context: self) do
+        <<~RUBY
+          # Command do
+          #   CommandInput(placeholder: "Type a command or search...")
+          #   CommandEmpty { "No results found." }
+          #   CommandList do
+          #     CommandGroup(title: "Components") do
+          #       components_list.each do |component|
+          #         CommandItem(value: component[:name], href: component[:path]) do
+          #           default_icon
+          #           plain component[:name]
+          #         end
+          #       end
+          #     end
+          #     CommandGroup(title: "Settings") do
+          #       settings_list.each do |setting|
+          #         CommandItem(value: setting[:name], href: setting[:path]) do
+          #           default_icon
+          #           plain setting[:name]
+          #         end
+          #       end
+          #     end
+          #   end
+          # end
+        RUBY
+      end
+
       render Docs::VisualCodeExample.new(title: "Example", context: self) do
         <<~RUBY
           CommandDialog do
@@ -54,36 +81,67 @@ class Docs::CommandView < ApplicationView
 
       render Docs::VisualCodeExample.new(title: "With keybinding", context: self) do
         <<~RUBY
-          CommandDialog do
-            CommandDialogTrigger(keybindings: ['keydown.ctrl+j@window', 'keydown.meta+j@window']) do
-              p(class: "text-sm text-muted-foreground") do
-                span(class: 'mr-1') { "Press" }
-                ShortcutKey do
-                  span(class: "text-xs") { "⌘" }
-                  plain "J"
+          # CommandDialog do
+          #   CommandDialogTrigger(keybindings: ['keydown.ctrl+j@window', 'keydown.meta+j@window']) do
+          #     p(class: "text-sm text-muted-foreground") do
+          #       span(class: 'mr-1') { "Press" }
+          #       ShortcutKey do
+          #         span(class: "text-xs") { "⌘" }
+          #         plain "J"
+          #       end
+          #     end
+          #   end
+          #   CommandDialogContent do
+          #     Command do
+          #       CommandInput(placeholder: "Type a command or search...")
+          #       CommandEmpty { "No results found." }
+          #       CommandList do
+          #         CommandGroup(title: "Components") do
+          #           components_list.each do |component|
+          #             CommandItem(value: component[:name], href: component[:path]) do
+          #               default_icon
+          #               plain component[:name]
+          #             end
+          #           end
+          #         end
+          #         CommandGroup(title: "Settings") do
+          #           settings_list.each do |setting|
+          #             CommandItem(value: setting[:name], href: setting[:path]) do
+          #               default_icon
+          #               plain setting[:name]
+          #             end
+          #           end
+          #         end
+          #       end
+          #     end
+          #   end
+          # end
+        RUBY
+      end
+
+      render Docs::VisualCodeExample.new(title: "Command", context: self, premium: @premium) do
+        <<~RUBY
+          Command(class: "flex h-full w-full flex-col overflow-hidden bg-popover text-popover-foreground rounded-lg border shadow-md") do
+            CommandInput(placeholder: "Type a command or search...")
+            CommandList do
+              CommandEmpty { "No results found." }
+              CommandGroup(title: "Components") do
+                components_list.each do |component|
+                  CommandItem(
+                    # class: "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none aria-selected:bg-accent aria-selected:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+                    value: component[:name],
+                    href: component[:path]
+                  ) do
+                    default_icon
+                    plain component[:name]
+                  end
                 end
               end
-            end
-            CommandDialogContent do
-              Command do
-                CommandInput(placeholder: "Type a command or search...")
-                CommandEmpty { "No results found." }
-                CommandList do
-                  CommandGroup(title: "Components") do
-                    components_list.each do |component|
-                      CommandItem(value: component[:name], href: component[:path]) do
-                        default_icon
-                        plain component[:name]
-                      end
-                    end
-                  end
-                  CommandGroup(title: "Settings") do
-                    settings_list.each do |setting|
-                      CommandItem(value: setting[:name], href: setting[:path]) do
-                        default_icon
-                        plain setting[:name]
-                      end
-                    end
+              CommandGroup(title: "Settings") do
+                settings_list.each do |setting|
+                  CommandItem(value: setting[:name], href: setting[:path]) do
+                    default_icon
+                    plain setting[:name]
                   end
                 end
               end
@@ -92,6 +150,50 @@ class Docs::CommandView < ApplicationView
         RUBY
       end
 
+      render Docs::VisualCodeExample.new(title: "With keybinding", context: self, premium: @premium) do
+        <<~RUBY
+          CommandDialog do
+            CommandDialogTrigger(keybindings: ['keydown.ctrl+i@window', 'keydown.meta+i@window']) do
+              p(class: "text-sm text-muted-foreground") do
+                span(class: 'mr-1') { "Press" }
+                ShortcutKey do
+                  span(class: "text-xs") { "⌘" }
+                  plain "J"
+                end
+              end
+            end
+            CommandDialogContent(id: "list") do
+              CommandInput(placeholder: "Search framework...")
+              CommandList do
+                CommandEmpty { "No results found." }
+                CommandGroup(heading: "Suggestions") do
+                  CommandItem(value: "calendar") do
+                    span { "Calendar" }
+                  end
+                  CommandItem(value: "smile") do
+                    span { "Search Emoji" }
+                  end
+                  CommandItem(value: "calculator") do
+                    span { "Calculator" }
+                  end
+                end
+
+                CommandGroup(heading: "Settings") do
+                  CommandItem(value: "profile") do
+                    span { "Profile" }
+                  end
+                  CommandItem(value: "billing") do
+                    span { "Billing" }
+                  end
+                  CommandItem(value: "settings") do
+                    span { "Settings" }
+                  end
+                end
+              end
+            end
+          end
+        RUBY
+      end
       render Docs::ComponentsTable.new(components)
     end
   end
@@ -152,7 +254,33 @@ class Docs::CommandView < ApplicationView
       {name: "Alert Dialog", path: helpers.docs_alert_dialog_path},
       {name: "Aspect Ratio", path: helpers.docs_aspect_ratio_path},
       {name: "Avatar", path: helpers.docs_avatar_path},
-      {name: "Badge", path: helpers.docs_badge_path}
+      {name: "Badge", path: helpers.docs_badge_path},
+      {name: "Button", path: helpers.docs_button_path},
+      {name: "Card", path: helpers.docs_card_path},
+      {name: "Calendar", path: helpers.docs_calendar_path},
+      # { name: "Chart", path: helpers.docs_chart_path, badge: "New" },
+      {name: "Checkbox", path: helpers.docs_checkbox_path},
+      {name: "Codeblock", path: helpers.docs_codeblock_path},
+      {name: "Collapsible", path: helpers.docs_collapsible_path},
+      {name: "Combobox", path: helpers.docs_combobox_path},
+      {name: "Command", path: helpers.docs_command_path},
+      {name: "Context Menu", path: helpers.docs_context_menu_path},
+      {name: "Date Picker", path: helpers.docs_date_picker_path},
+      {name: "Dialog / Modal", path: helpers.docs_dialog_path},
+      {name: "Dropdown Menu", path: helpers.docs_dropdown_menu_path},
+      {name: "Input", path: helpers.docs_input_path},
+      {name: "Hover Card", path: helpers.docs_hover_card_path},
+      {name: "Link", path: helpers.docs_link_path},
+      {name: "Pagination", path: helpers.docs_pagination_path, badge: "New"},
+      {name: "Popover", path: helpers.docs_popover_path},
+      {name: "Select", path: helpers.docs_select_path, badge: "New"},
+      {name: "Sheet", path: helpers.docs_sheet_path},
+      {name: "Shortcut Key", path: helpers.docs_shortcut_key_path},
+      {name: "Table", path: helpers.docs_table_path},
+      {name: "Tabs", path: helpers.docs_tabs_path},
+      {name: "Theme Toggle", path: helpers.docs_theme_toggle_path},
+      {name: "Tooltip", path: helpers.docs_tooltip_path},
+      {name: "Typography", path: helpers.docs_typography_path}
     ]
   end
 
