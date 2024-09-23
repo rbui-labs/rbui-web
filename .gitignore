@@ -36,5 +36,3 @@
 /node_modules
 
 .env* 
-
-.tool-versions
