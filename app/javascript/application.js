@@ -2,3 +2,5 @@
 import "@hotwired/turbo-rails";
 import "rbui-js";
 import "./controllers";
+
+import "../components/rbui/index";
