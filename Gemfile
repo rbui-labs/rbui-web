@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.3.4"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.2.0.beta3"
+gem "rails", "7.2.0"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft", "0.9.0"
 # Use sqlite3 as the database for Active Record
@@ -64,6 +64,7 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
   gem "standard"
+  gem "dockerfile-rails", ">= 1.6"
 end
 
 group :test do
@@ -73,7 +74,8 @@ group :test do
 end
 
 gem "phlex-rails"
-gem "phlex_ui", github: "PhlexUI/phlex_ui", branch: "main"
-# gem "phlex_ui", path: "../phlex_ui"
 
-gem "dockerfile-rails", ">= 1.6", group: :development
+gem "rbui", github: "rbui-labs/rbui"
+# gem "rbui", path: "../rbui"
+
+gem "pry"

@@ -15,8 +15,8 @@ class Docs::DialogView < ApplicationView
             end
             DialogContent do
               DialogHeader do
-                DialogTitle { "PhlexUI to the rescue" }
-                DialogDescription { "PhlexUI helps you build accessible standard compliant web apps with ease" }
+                DialogTitle { "RBUI to the rescue" }
+                DialogDescription { "RBUI helps you build accessible standard compliant web apps with ease" }
               end
               DialogMiddle do
                 AspectRatio(aspect_ratio: "16/9", class: 'rounded-md overflow-hidden border') do
@@ -29,7 +29,7 @@ class Docs::DialogView < ApplicationView
                 end
               end
               DialogFooter do
-                Button(variant: :outline, data: { action: 'click->dismissable#dismiss' }) { "Cancel" }
+                Button(variant: :outline, data: { action: 'click->rbui--dialog#dismiss' }) { "Cancel" }
                 Button { "Save" }
               end
             end
@@ -46,8 +46,8 @@ class Docs::DialogView < ApplicationView
               end
               DialogContent(size: :sm) do
                 DialogHeader do
-                  DialogTitle { "PhlexUI to the rescue" }
-                  DialogDescription { "PhlexUI helps you build accessible standard compliant web apps with ease" }
+                  DialogTitle { "RBUI to the rescue" }
+                  DialogDescription { "RBUI helps you build accessible standard compliant web apps with ease" }
                 end
                 DialogMiddle do
                   AspectRatio(aspect_ratio: "16/9", class: 'rounded-md overflow-hidden border') do
@@ -60,7 +60,7 @@ class Docs::DialogView < ApplicationView
                   end
                 end
                 DialogFooter do
-                  Button(variant: :outline, data: { action: 'click->dismissable#dismiss' }) { "Cancel" }
+                  Button(variant: :outline, data: { action: 'click->rbui--dialog#dismiss' }) { "Cancel" }
                   Button { "Save" }
                 end
               end
@@ -72,8 +72,8 @@ class Docs::DialogView < ApplicationView
               end
               DialogContent(size: :lg) do
                 DialogHeader do
-                  DialogTitle { "PhlexUI to the rescue" }
-                  DialogDescription { "PhlexUI helps you build accessible standard compliant web apps with ease" }
+                  DialogTitle { "RBUI to the rescue" }
+                  DialogDescription { "RBUI helps you build accessible standard compliant web apps with ease" }
                 end
                 DialogMiddle do
                   AspectRatio(aspect_ratio: "16/9", class: 'rounded-md overflow-hidden border') do
@@ -86,7 +86,7 @@ class Docs::DialogView < ApplicationView
                   end
                 end
                 DialogFooter do
-                  Button(variant: :outline, data: { action: 'click->dismissable#dismiss' }) { "Cancel" }
+                  Button(variant: :outline, data: { action: 'click->rbui--dialog#dismiss' }) { "Cancel" }
                   Button { "Save" }
                 end
               end

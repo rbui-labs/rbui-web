@@ -27,13 +27,16 @@ Rails.application.routes.draw do
     get "calendar", to: "docs#calendar", as: :docs_calendar
     get "chart", to: "docs#chart", as: :docs_chart
     get "checkbox", to: "docs#checkbox", as: :docs_checkbox
+    get "clipboard", to: "docs#clipboard", as: :docs_clipboard
     get "codeblock", to: "docs#codeblock", as: :docs_codeblock
     get "collapsible", to: "docs#collapsible", as: :docs_collapsible
+    get "combobox", to: "docs#combobox", as: :docs_combobox
     get "command", to: "docs#command", as: :docs_command
     get "context_menu", to: "docs#context_menu", as: :docs_context_menu
     get "date_picker", to: "docs#date_picker", as: :docs_date_picker
-    get "dropdown_menu", to: "docs#dropdown_menu", as: :docs_dropdown_menu
     get "dialog", to: "docs#dialog", as: :docs_dialog
+    get "dropdown_menu", to: "docs#dropdown_menu", as: :docs_dropdown_menu
+    get "form", to: "docs#form", as: :docs_form
     get "hover_card", to: "docs#hover_card", as: :docs_hover_card
     get "input", to: "docs#input", as: :docs_input
     get "link", to: "docs#link", as: :docs_link

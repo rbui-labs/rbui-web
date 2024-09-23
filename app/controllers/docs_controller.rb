@@ -78,12 +78,20 @@ class DocsController < ApplicationController
     render Docs::CheckboxView.new
   end
 
+  def clipboard
+    render Docs::ClipboardView.new
+  end
+
   def codeblock
     render Docs::CodeblockView.new
   end
 
   def collapsible
     render Docs::CollapsibleView.new
+  end
+
+  def combobox
+    render Docs::ComboboxView.new
   end
 
   def command
@@ -104,6 +112,10 @@ class DocsController < ApplicationController
 
   def dropdown_menu
     render Docs::DropdownMenuView.new
+  end
+
+  def form
+    render Docs::FormView.new
   end
 
   def hover_card
