@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Docs::HoverCardView < ApplicationView
+class Views::Docs::HoverCard < Components::Layouts::Docs
+  def page_title = "Hover_card"
+
   def view_template
     component = "HoverCard"
 

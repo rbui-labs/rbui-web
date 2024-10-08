@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Docs::DropdownMenuView < ApplicationView
+class Views::Docs::DropdownMenu < Components::Layouts::Docs
+  def page_title = "Dropdown_menu"
+
   def view_template
     component = "DropdownMenu"
     div(class: "max-w-2xl mx-auto w-full py-10 space-y-10") do

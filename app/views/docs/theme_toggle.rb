@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Docs::ThemeToggleView < ApplicationView
+class Views::Docs::ThemeToggle < Components::Layouts::Docs
+  def page_title = "Theme_toggle"
+
   def view_template
     component = "ThemeToggle"
 

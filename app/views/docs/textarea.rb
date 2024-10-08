@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-class Docs::TextareaView < ApplicationView
+class Views::Docs::Textarea < Components::Layouts::Docs
+  def page_title = "Textarea"
   def view_template
     component = "Textarea"
 

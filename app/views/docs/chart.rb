@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-class Docs::ChartView < ApplicationView
+class Views::Docs::Chart < Components::Layouts::Docs
+  def page_title = "Chart"
   def view_template
     div(class: "max-w-2xl mx-auto w-full py-10 space-y-10") do
       render Docs::Header.new(title: "Chart", description: "Displays information in a visual way.")

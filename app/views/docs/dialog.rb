@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-class Docs::DialogView < ApplicationView
+class Views::Docs::Dialog < Components::Layouts::Docs
+  def page_title = "Dialog"
   def view_template
     component = "Dialog"
 

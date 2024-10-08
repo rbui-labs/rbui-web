@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Docs::SheetView < ApplicationView
+class Views::Docs::Sheet < Components::Layouts::Docs
+  def page_title = "Sheet"
+
   def view_template
     component = "Sheet"
 
@@ -44,7 +46,7 @@ class Docs::SheetView < ApplicationView
               SheetTrigger do
                 Button(variant: :outline, class: 'w-full justify-center') { :top }
               end
-              SheetContent(side: :top, class: tokens(-> { [:left, :right].include?(:top) } => "sm:max-w-sm")) do
+              SheetContent(side: :top, class: [("sm:max-w-sm" if [:left, :right].include?(:top)) ]) do
                 SheetHeader do
                   SheetTitle { "Edit profile" }
                   SheetDescription { "Make changes to your profile here. Click save when you're done." }

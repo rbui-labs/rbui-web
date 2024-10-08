@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-class Docs::InputView < ApplicationView
+class Views::Docs::Input < Components::Layouts::Docs
+  def page_title = "Input"
   def view_template
     component = "Input"
 

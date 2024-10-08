@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-class Docs::TabsView < ApplicationView
+class Views::Docs::Tabs < Components::Layouts::Docs
+  def page_title = "Tabs"
   Repo = Struct.new(:github_url, :name, :stars, :version, keyword_init: true)
 
   def view_template

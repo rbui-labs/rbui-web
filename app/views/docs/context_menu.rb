@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Docs::ContextMenuView < ApplicationView
+class Views::Docs::ContextMenu < Components::Layouts::Docs
+  def page_title = "Context_menu"
+
   def view_template
     component = "ContextMenu"
     div(class: "max-w-2xl mx-auto w-full py-10 space-y-10") do

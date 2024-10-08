@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Docs::ShortcutKeyView < ApplicationView
+class Views::Docs::ShortcutKey < Components::Layouts::Docs
+  def page_title = "Shortcut_key"
+
   def view_template
     component = "ShortcutKey"
 

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-class Docs::PaginationView < ApplicationView
+class Views::Docs::Pagination < Components::Layouts::Docs
+  def page_title = "Pagination"
   def view_template
     component = "Pagination"
 
