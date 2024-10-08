@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Docs::ClipboardView < ApplicationView
+class Views::Docs::Clipboard < Components::Layouts::Docs
+  def page_title = "Clipboard"
+
   def view_template
     component = "Clipboard"
     div(class: "max-w-2xl mx-auto w-full py-10 space-y-10") do

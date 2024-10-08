@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Docs::CollapsibleView < ApplicationView
+class Views::Docs::Collapsible < Components::Layouts::Docs
+  def page_title = "Collapsible"
+
   def view_template
     component = "Collapsible"
     div(class: "max-w-2xl mx-auto w-full py-10 space-y-10") do

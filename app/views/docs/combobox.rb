@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Docs::ComboboxView < ApplicationView
+class Views::Docs::Combobox < Components::Layouts::Docs
+  def page_title = "Combobox"
+
   @@code_example = nil
 
   def view_template

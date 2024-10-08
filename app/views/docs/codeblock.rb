@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Docs::CodeblockView < ApplicationView
+class Views::Docs::Codeblock < Components::Layouts::Docs
+  def page_title = "Codeblock"
+
   def view_template
     component = "Codeblock"
     div(class: "max-w-2xl mx-auto w-full py-10 space-y-10") do
