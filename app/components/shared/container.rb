@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Shared::Container < ApplicationComponent
+class Components::Shared::Container < ApplicationComponent
   DEFAULT_CLASS = "container mx-auto w-full px-4"
   SIZE_CLASSES = {
     sm: "max-w-md",
@@ -12,7 +12,7 @@ class Shared::Container < ApplicationComponent
 
   def initialize(size: "md", **attrs)
     @attrs = attrs
-    @attrs[:class] = tokens(DEFAULT_CLASS, SIZE_CLASSES[size].to_s, @attrs[:class])
+    @attrs[:class] = [DEFAULT_CLASS, SIZE_CLASSES[size].to_s, @attrs[:class]]
   end
 
   def view_template(&)
