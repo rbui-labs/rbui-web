@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
-class Pages::HomeView < ApplicationView
+class Views::Pages::HomeView < Components::Layouts::Pages
+  def page_title = "Introduction"
+
   def view_template
-    render HomeView::Banner.new do |banner|
+    render Views::HomeView::Banner.new do |banner|
       banner.cta do
         Link(variant: :outline, href: helpers.docs_accordion_path, class: "text-center justify-center") { "Browse Components" }
         Link(variant: :primary, href: helpers.docs_introduction_path, class: "text-center justify-center") do
@@ -26,7 +28,7 @@ class Pages::HomeView < ApplicationView
     div(class: "overflow-hidden") do
       div(class: "relative z-10 container mx-auto max-w-5xl pt-16 lg:pt-16 py-24 lg:py-32 px-4") do
         div(class: "grid grid-cols-6 gap-4") do
-          render HomeView::Card.new(class: "col-span-6 sm:col-span-3 md:col-span-4", title: "Built for Speed", subtitle: "Dive into a world where your Rails UI development happens at light speed. Phlex is not just fast - it's blazing fast.", color: :secondary) do |card|
+          render Views::HomeView::Card.new(class: "col-span-6 sm:col-span-3 md:col-span-4", title: "Built for Speed", subtitle: "Dive into a world where your Rails UI development happens at light speed. Phlex is not just fast - it's blazing fast.", color: :secondary) do |card|
             card.icon do
               svg(
                 xmlns: "http://www.w3.org/2000/svg",
@@ -43,7 +45,7 @@ class Pages::HomeView < ApplicationView
               end
             end
           end
-          render HomeView::Card.new(class: "col-span-6 sm:col-span-3 md:col-span-2", color: :sky) do |card|
+          render Views::HomeView::Card.new(class: "col-span-6 sm:col-span-3 md:col-span-2", color: :sky) do |card|
             card.content do
               div(class: "flex flex-col items-center justify-center text-center space-y-4 h-full") do
                 p(class: "text-6xl font-semibold") { "12x" }
@@ -51,12 +53,12 @@ class Pages::HomeView < ApplicationView
               end
             end
           end
-          render HomeView::Card.new(class: "col-span-6", color: :card, title: "Speed Tests", subtitle: "Huge thanks to @KonnorRogers for running these tests") do |card|
+          render Views::HomeView::Card.new(class: "col-span-6", color: :card, title: "Speed Tests", subtitle: "Huge thanks to @KonnorRogers for running these tests") do |card|
             card.content do
               render_speed_tests
             end
           end
-          render HomeView::Card.new(class: "col-span-6 sm:col-span-3", title: "UI that... Wow!", subtitle: "Design stunning, streamlined, and customizable UIs that not only look great but sell your app without you lifting a finger.", color: :violet) do |card|
+          render Views::HomeView::Card.new(class: "col-span-6 sm:col-span-3", title: "UI that... Wow!", subtitle: "Design stunning, streamlined, and customizable UIs that not only look great but sell your app without you lifting a finger.", color: :violet) do |card|
             card.icon do
               svg(
                 xmlns: "http://www.w3.org/2000/svg",
@@ -73,7 +75,7 @@ class Pages::HomeView < ApplicationView
               end
             end
           end
-          render HomeView::Card.new(class: "col-span-6 sm:col-span-3", title: "Stay Organized", subtitle: "Say goodbye to clutter. With Phlex, your UI components are not only organized, but also easy to manage and track.", color: :secondary) do |card|
+          render Views::HomeView::Card.new(class: "col-span-6 sm:col-span-3", title: "Stay Organized", subtitle: "Say goodbye to clutter. With Phlex, your UI components are not only organized, but also easy to manage and track.", color: :secondary) do |card|
             card.icon do
               svg(
                 xmlns: "http://www.w3.org/2000/svg",
@@ -101,7 +103,7 @@ class Pages::HomeView < ApplicationView
             end
           end
           div(class: "relative col-span-6") do
-            render HomeView::Shapes.new(color: :violet, class: "hidden md:block absolute top-0 left-0 rotate-90 -translate-x-1/2 translate-y-full", size: :lg)
+            render Views::HomeView::Shapes.new(color: :violet, class: "hidden md:block absolute top-0 left-0 rotate-90 -translate-x-1/2 translate-y-full", size: :lg)
             div(class: "mx-auto max-w-lg py-28") do
               steps = [
                 {
@@ -117,10 +119,10 @@ class Pages::HomeView < ApplicationView
                   description: "Every component is built entirely out of Tailwind utility classes, so you can easily dive in and adjust anything you want to better fit your use case."
                 }
               ]
-              render HomeView::Steps.new(steps: steps)
+              render Views::HomeView::Steps.new(steps: steps)
             end
           end
-          render HomeView::Card.new(class: "col-span-6 md:col-span-4", title: "Customer-Centric UX", subtitle: "Create an app experience your users will rave about. RBUI ensures that your user's journey is nothing less than memorable.", color: :pink) do |card|
+          render Views::HomeView::Card.new(class: "col-span-6 md:col-span-4", title: "Customer-Centric UX", subtitle: "Create an app experience your users will rave about. RBUI ensures that your user's journey is nothing less than memorable.", color: :pink) do |card|
             card.icon do
               svg(
                 xmlns: "http://www.w3.org/2000/svg",
@@ -135,7 +137,7 @@ class Pages::HomeView < ApplicationView
               end
             end
           end
-          render HomeView::Card.new(class: "col-span-6 md:col-span-2", title: "Completely Customisable", subtitle: "Have full control over the design of all components.", color: :amber) do |card|
+          render Views::HomeView::Card.new(class: "col-span-6 md:col-span-2", title: "Completely Customisable", subtitle: "Have full control over the design of all components.", color: :amber) do |card|
             card.icon do
               svg(
                 xmlns: "http://www.w3.org/2000/svg",
@@ -152,7 +154,7 @@ class Pages::HomeView < ApplicationView
               end
             end
           end
-          render HomeView::Card.new(class: "col-span-6 sm:col-span-3", title: "Minimal Dependencies", subtitle: "Keep your app lean and mean. With RBUI, we use custom built Stimulus.js controllers wherever possible - less package dependencies to worry about.", color: :secondary) do |card|
+          render Views::HomeView::Card.new(class: "col-span-6 sm:col-span-3", title: "Minimal Dependencies", subtitle: "Keep your app lean and mean. With RBUI, we use custom built Stimulus.js controllers wherever possible - less package dependencies to worry about.", color: :secondary) do |card|
             card.icon do
               svg(
                 xmlns: "http://www.w3.org/2000/svg",
@@ -167,7 +169,7 @@ class Pages::HomeView < ApplicationView
               end
             end
           end
-          render HomeView::Card.new(class: "col-span-6 sm:col-span-3", title: "Reuse with Ease", subtitle: "Avoid the hassle of constantly reconstructing components. With Phlex, once built, use them seamlessly as needed.", color: :lime) do |card|
+          render Views::HomeView::Card.new(class: "col-span-6 sm:col-span-3", title: "Reuse with Ease", subtitle: "Avoid the hassle of constantly reconstructing components. With Phlex, once built, use them seamlessly as needed.", color: :lime) do |card|
             card.icon do
               svg(
                 xmlns: "http://www.w3.org/2000/svg",

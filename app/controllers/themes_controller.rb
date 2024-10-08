@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class ThemesController < ApplicationController
-  layout -> { ApplicationLayout }
+  layout false
 
   # GET /themes/:theme
   def show
-    render Themes::ShowView.new(theme: params[:theme])
+    render Views::Themes::Show.new(theme: params[:theme])
   end
 end

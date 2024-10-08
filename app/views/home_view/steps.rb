@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class HomeView::Steps < ApplicationComponent
+class Views::HomeView::Steps < ApplicationComponent
   def initialize(attributes = {})
     @attributes = attributes
     @steps = attributes.delete(:steps) || []

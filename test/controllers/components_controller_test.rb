@@ -19,7 +19,10 @@ class ComponentsControllerTest < ActionDispatch::IntegrationTest
   all_docs_routes.each do |route|
     test "should get #{route[:action]}" do
       get route[:path]
-      assert_response :success
+      assert_response :success, lambda {
+        "Route failed: #{route[:method]} #{route[:path]} (#{route[:controller]}##{route[:action]})\n" \
+          "Expected response to be a <2XX: success>, but was a <#{response.code}: #{Rack::Utils::HTTP_STATUS_CODES[response.code.to_i]}>"
+      }
     end
   end
 end
