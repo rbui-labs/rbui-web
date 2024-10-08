@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Docs::Installation::RailsImportmapsView < ApplicationView
+class Views::Docs::Installation::RailsImportmapsView < Components::Layouts::Docs
+  def page_title = "Rails - Importmaps"
+
   def initialize
     @phlex_rails_link = "https://www.phlex.fun/rails/"
     @phlex_ui_pro_private_key = ENV["BUNDLE_PHLEXUI__FURY__SITE"]

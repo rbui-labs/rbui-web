@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Errors::NotFoundView < ApplicationView
+class Views::Errors::NotFoundView < Components::Layouts::Errors
+  def page_title = "404 Not Found"
+
   def view_template
     Card(class: "p-8 space-y-6 flex flex-col items-center") do
       div(class: "space-y-2") do
