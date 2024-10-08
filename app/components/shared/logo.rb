@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Shared::Logo < ApplicationComponent
+class Components::Shared::Logo < ApplicationComponent
   def view_template
     a(href: helpers.root_url, class: "mr-6 flex items-center space-x-2") do
       TypographyH4(class: "flex items-center") {

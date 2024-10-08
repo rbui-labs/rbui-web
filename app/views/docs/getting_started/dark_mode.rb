@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Docs::GettingStarted::DarkModeView < ApplicationView
+class Views::Docs::GettingStarted::DarkMode < Components::Layouts::Docs
+  def page_title = "Dark mode"
+
   def view_template
     div(class: "max-w-2xl mx-auto w-full py-10 space-y-10") do
       render Docs::Header.new(title: "Dark mode", description: "How to use dark mode in your application")
@@ -46,7 +48,7 @@ class Docs::GettingStarted::DarkModeView < ApplicationView
         end
 
         div(class: "pt-4") do
-          render Docs::VisualCodeExample.new(title: "Toggle component", context: self) do
+          render Components::Docs::VisualCodeExample.new(title: "Toggle component", context: self) do
             <<~RUBY
               ThemeToggle do |toggle|
                 toggle.light_mode do

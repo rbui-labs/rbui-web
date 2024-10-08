@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
-class Docs::GettingStarted::IntroductionView < ApplicationView
+class Views::Docs::GettingStarted::Introduction < Components::Layouts::Docs
+  def page_title = "Introduction"
+
   def view_template
     div(class: "max-w-2xl mx-auto w-full py-10 space-y-10") do
-      render Docs::Header.new(title: "Introduction", description: "Reusable UI components for Ruby developers")
+      render Components::Docs::Header.new(title: "Introduction", description: "Reusable UI components for Ruby developers")
 
       div(class: "space-y-4") do
         TypographyH2 { "About" }

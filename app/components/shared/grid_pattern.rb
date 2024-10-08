@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Shared::GridPattern < ApplicationComponent
+class Components::Shared::GridPattern < Components::Base
   def initialize(spacing: :md)
     sizes = {
       xs: 15,

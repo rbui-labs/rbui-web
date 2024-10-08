@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class HomeView::Shapes < ApplicationComponent
+class Views::HomeView::Shapes < Views::Base
   def initialize(size: :md, **attributes)
     @attributes = attributes
     @circle_sizes = {

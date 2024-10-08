@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Docs::Header < ApplicationComponent
+class Components::Docs::Header < Components::Base
   def initialize(title: nil, description: nil)
     @title = title
     @description = description

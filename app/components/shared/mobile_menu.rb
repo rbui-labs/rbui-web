@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Shared::MobileMenu < ApplicationComponent
+class Components::Shared::MobileMenu < ApplicationComponent
   def initialize(**attributes)
     @attributes = attributes
   end
@@ -16,7 +16,7 @@ class Shared::MobileMenu < ApplicationComponent
         div(class: "flex flex-col h-full") do
           SheetHeader do
             div(class: "pl-2") do
-              render Shared::Logo.new
+              render Components::Shared::Logo.new
             end
           end
           div(class: "flex-grow overflow-y-scroll") do

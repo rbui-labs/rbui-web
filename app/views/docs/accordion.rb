@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Docs::AccordionView < ApplicationView
+class Views::Docs::Accordion < Components::Layouts::Docs
+  def page_title = "Accordion"
+
   def view_template
     div(class: "max-w-2xl mx-auto w-full py-10 space-y-10") do
       component = "Accordion"

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Docs::GettingStarted::ThemingView < ApplicationView
+class Views::Docs::GettingStarted::Theming < Components::Layouts::Docs
+  def page_title = "Theming"
+
   def view_template
     div(class: "max-w-2xl mx-auto w-full py-10 space-y-10") do
       render Docs::Header.new(title: "Theming", description: "Using CSS variables for theming.")

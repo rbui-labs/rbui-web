@@ -16,7 +16,7 @@ class Docs::DatePickerView < ApplicationView
               PopoverTrigger(class: 'w-full') do
                 div(class: 'grid w-full max-w-sm items-center gap-1.5') do
                   label(for: "date") { "Select a date" }
-                  Input(type: 'string', placeholder: "Select a date", class: 'rounded-md border shadow', id: 'date', data_controller: 'input')
+                  Input(type: 'string', placeholder: "Select a date", class: 'rounded-md border shadow', id: 'date', data_controller: 'rbui--calendar_input')
                 end
               end
               PopoverContent do

@@ -1,32 +1,33 @@
 # frozen_string_literal: true
 
-class MethodCallFinder < Prism::Visitor
-  attr_reader :calls
-
-  def initialize(calls)
-    @calls = calls
-  end
-
-  def visit_call_node(node)
-    super
-    calls << node.name
-  end
-end
-
-class ApplicationView < Components::Base
+class Components::Base < Phlex::HTML
   include RBUI
-  # The ApplicationView is an abstract class for all your views.
+  include Components
 
-  # By default, it inherits from `ApplicationComponent`, but you
-  # can change that to `Phlex::HTML` if you want to keep views and
-  # components independent.
+  # Include any helpers you want to be available across all components
+  include Phlex::Rails::Helpers::Routes
 
   GITHUB_REPO_URL = "https://github.com/rbui-labs/rbui/"
   GITHUB_FILE_URL = "#{GITHUB_REPO_URL}blob/main/"
 
-  def before_template
-    Docs::VisualCodeExample.reset_collected_code
-    super
+  if Rails.env.development?
+    def before_template
+      comment { "Before #{self.class.name}" }
+      super
+    end
+  end
+
+  class MethodCallFinder < Prism::Visitor
+    attr_reader :calls
+
+    def initialize(calls)
+      @calls = calls
+    end
+
+    def visit_call_node(node)
+      super
+      calls << node.name
+    end
   end
 
   def component_references(component, code_example = nil, use_component_files = false)
@@ -41,23 +42,13 @@ class ApplicationView < Components::Base
     # component_names = code_example.scan(/(?<=^|\s)#{component}\w*/).uniq
 
     component_names.map do |name|
-      Docs::ComponentStruct.new(
+      ::Docs::ComponentStruct.new(
         name: name,
         source: "lib/rbui/#{camel_to_snake(component)}/#{camel_to_snake(name)}.rb",
         built_using: :phlex
       )
     end
-
-    # component_names.push(
-    #   Docs::ComponentStruct.new(
-    #     name: "ComboboxController",
-    #     source: "https://github.com/PhlexUI/phlex_ui_stimulus/blob/main/controllers/command_controller.js",
-    #     built_using: :stimulus
-    #   )
-    # )
   end
-
-  require "rubygems"
 
   def component_files(component, gem_name = "rbui")
     # Find the gem specification
@@ -87,7 +78,7 @@ class ApplicationView < Components::Base
         :stimulus
       end
 
-      Docs::ComponentStruct.new(
+      ::Docs::ComponentStruct.new(
         name: name,
         source: source,
         built_using: built_using

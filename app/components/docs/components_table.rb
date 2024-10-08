@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Docs::ComponentsTable < ApplicationComponent
+class Components::Docs::ComponentsTable < Components::Base
   def initialize(components, file_components = nil)
     @components = components.sort_by { |component| [component.built_using, component.name] }
     @file_components = file_components.sort_by { |component| [component.built_using, component.name] } if file_components

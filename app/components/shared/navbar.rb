@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-class Shared::Navbar < ApplicationComponent
+class Components::Shared::Navbar < Components::Base
   def view_template
     header(class: "supports-backdrop-blur:bg-background/80 sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-2xl backdrop-saturate-200") do
       div(class: "px-2 sm:px-4 sm:container flex h-14 items-center justify-between") do
         div(class: "mr-4 flex items-center") do
-          render Shared::MobileMenu.new(class: "md:hidden")
-          render Shared::Logo.new
+          render Components::Shared::MobileMenu.new(class: "md:hidden")
+          render Components::Shared::Logo.new
 
           Link(href: helpers.docs_introduction_path, variant: :ghost, class: "hidden md:inline-block") { "Docs" }
           Link(href: helpers.docs_accordion_path, variant: :ghost, class: "hidden md:inline-block") { "Components" }

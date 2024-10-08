@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
-class Docs::GettingStarted::CustomizingComponentsView < ApplicationView
+class Views::Docs::GettingStarted::CustomizingComponents < Components::Layouts::Docs
+  def page_title = "Customizing components"
+
+  def layout = Layouts::Docs
+
   def view_template
     div(class: "max-w-2xl mx-auto w-full py-10 space-y-10") do
       render Docs::Header.new(title: "Customizing components", description: "When theming doesn't suffice, RBUI allows you to tailor the components to your specific needs.")

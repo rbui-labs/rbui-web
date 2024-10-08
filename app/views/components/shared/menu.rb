@@ -101,7 +101,12 @@ class Shared::Menu < ApplicationComponent
 
   def menu_link(component)
     current_path = component[:path] == helpers.request.path
-    a(href: component[:path], class: tokens("group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:underline", -> { current_path } => "text-foreground font-medium", -> { !current_path } => "text-muted-foreground")) do
+    a(href: component[:path], class: [
+      "group flex w-full items-center rounded-md border border-transparent px-2 py-1",
+      "hover:underline",
+      ("text-foreground font-medium" if current_path),
+      ("text-muted-foreground" unless current_path)
+    ]) do
       span(class: "flex items-center gap-x-1") do
         span { component[:name] }
         Badge(variant: :success, size: :sm, class: "ml-1") { component[:badge] } if component[:badge]
@@ -111,7 +116,12 @@ class Shared::Menu < ApplicationComponent
 
   def main_link(name, path)
     current_path = path == helpers.request.path
-    a(href: path, class: tokens("group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:underline", -> { current_path } => "text-foreground font-medium", -> { !current_path } => "text-muted-foreground")) do
+    a(href: path, class: [
+      "group flex w-full items-center rounded-md border border-transparent px-2 py-1",
+      "hover:underline",
+      ("text-foreground font-medium" if current_path),
+      ("text-muted-foreground" unless current_path)
+    ]) do
       name
     end
   end

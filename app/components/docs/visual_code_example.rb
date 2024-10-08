@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Docs::VisualCodeExample < ApplicationComponent
+class Components::Docs::VisualCodeExample < Components::Base
   @@collected_code = []
 
   def self.collected_code

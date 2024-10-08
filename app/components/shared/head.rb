@@ -1,11 +1,17 @@
 # frozen_string_literal: true
 
-class Shared::Head < ApplicationComponent
+class Components::Shared::Head < Components::Base
   include Phlex::Rails::Layout
+  include Phlex::Rails::Helpers::CSRFMetaTags
+  include Phlex::Rails::Helpers::StylesheetLinkTag
+
+  def initialize(page_info)
+    @page_info = page_info
+  end
 
   def view_template
     head do
-      title { "RBUI - Component Library" }
+      title { "RBUI - " + @page_info.title }
       meta name: "viewport", content: "width=device-width,initial-scale=1"
       meta name: "turbo-refresh-method", content: "morph"
       meta name: "turbo-refresh-scroll", content: "preserve"
