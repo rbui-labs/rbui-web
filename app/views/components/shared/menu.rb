@@ -70,7 +70,7 @@ class Shared::Menu < ApplicationComponent
       {name: "Button", path: helpers.docs_button_path},
       {name: "Card", path: helpers.docs_card_path},
       {name: "Calendar", path: helpers.docs_calendar_path},
-      # { name: "Chart", path: helpers.docs_chart_path, badge: "New" },
+      {name: "Chart", path: helpers.docs_chart_path, badge: "New"},
       {name: "Checkbox", path: helpers.docs_checkbox_path},
       {name: "Clipboard", path: helpers.docs_clipboard_path},
       {name: "Codeblock", path: helpers.docs_codeblock_path},

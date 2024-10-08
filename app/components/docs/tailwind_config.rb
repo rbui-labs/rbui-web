@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Docs::TailwindConfig < ApplicationComponent
+class Components::Docs::TailwindConfig < ApplicationComponent
   def view_template
     TypographyLarge { "Update Tailwind Configuration" }
     TypographyP do

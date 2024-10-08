@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::Docs::Installation::RailsImportmapsView < Components::Layouts::Docs
+class Views::Docs::Installation::RailsImportmaps < Components::Layouts::Docs
   def page_title = "Rails - Importmaps"
 
   def initialize

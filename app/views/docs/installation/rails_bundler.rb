@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::Docs::Installation::RailsBundlerView < Components::Layouts::Docs
+class Views::Docs::Installation::RailsBundler < Components::Layouts::Docs
   def page_title = "Rails - JS Bundler"
 
   def initialize

@@ -2,6 +2,7 @@
 
 class Views::Docs::Chart < Components::Layouts::Docs
   def page_title = "Chart"
+
   def view_template
     div(class: "max-w-2xl mx-auto w-full py-10 space-y-10") do
       render Docs::Header.new(title: "Chart", description: "Displays information in a visual way.")
@@ -99,7 +100,7 @@ class Views::Docs::Chart < Components::Layouts::Docs
         RUBY
       end
 
-      render Docs::ComponentsTable.new(components)
+      render Docs::ComponentsTable.new(component_references(page_title, Docs::VisualCodeExample.collected_code), component_files(page_title))
     end
   end
 
@@ -107,8 +108,8 @@ class Views::Docs::Chart < Components::Layouts::Docs
 
   def components
     [
-      Docs::ComponentStruct.new(name: "ChartController", source: "https://github.com/PhlexUI/phlex_ui_stimulus/blob/main/controllers/chart_controller.js", built_using: :stimulus),
-      Docs::ComponentStruct.new(name: "Chart", source: "https://github.com/PhlexUI/phlex_ui/blob/main/lib/phlex_ui/chart.rb", built_using: :phlex)
+      ::Docs::ComponentStruct.new(name: "ChartController", source: "https://github.com/PhlexUI/phlex_ui_stimulus/blob/main/controllers/chart_controller.js", built_using: :stimulus),
+      ::Docs::ComponentStruct.new(name: "Chart", source: "https://github.com/PhlexUI/phlex_ui/blob/main/lib/phlex_ui/chart.rb", built_using: :phlex)
     ]
   end
 end

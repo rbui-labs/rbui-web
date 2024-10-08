@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Docs::TailwindCss < ApplicationComponent
+class Components::Docs::TailwindCss < ApplicationComponent
   def view_template
     TypographyLarge { "Add CSS variables" }
     TypographyP do
