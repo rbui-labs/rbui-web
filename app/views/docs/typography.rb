@@ -2,6 +2,7 @@
 
 class Views::Docs::Typography < Components::Layouts::Docs
   def page_title = "Typography"
+
   def view_template
     component = "Typography"
 

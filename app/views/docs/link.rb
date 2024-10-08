@@ -2,6 +2,7 @@
 
 class Views::Docs::Link < Components::Layouts::Docs
   def page_title = "Link"
+
   def view_template
     component = "Link"
 

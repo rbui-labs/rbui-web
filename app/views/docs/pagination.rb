@@ -2,6 +2,7 @@
 
 class Views::Docs::Pagination < Components::Layouts::Docs
   def page_title = "Pagination"
+
   def view_template
     component = "Pagination"
 

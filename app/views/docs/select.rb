@@ -2,6 +2,7 @@
 
 class Views::Docs::Select < Components::Layouts::Docs
   def page_title = "Select"
+
   def view_template
     component = "Select"
 

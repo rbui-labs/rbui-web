@@ -2,6 +2,7 @@
 
 class Views::Docs::Form < Components::Layouts::Docs
   def page_title = "Form"
+
   def view_template
     component = "Form"
     div(class: "max-w-2xl mx-auto w-full py-10 space-y-10") do

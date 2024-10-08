@@ -2,6 +2,7 @@
 
 class Views::Docs::Tooltip < Components::Layouts::Docs
   def page_title = "Tooltip"
+
   def view_template
     component = "Tooltip"
 

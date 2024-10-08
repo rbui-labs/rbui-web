@@ -2,6 +2,7 @@
 
 class Views::Docs::Popover < Components::Layouts::Docs
   def page_title = "Popover"
+
   def view_template
     component = "Popover"
 

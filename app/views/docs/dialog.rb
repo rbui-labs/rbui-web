@@ -2,6 +2,7 @@
 
 class Views::Docs::Dialog < Components::Layouts::Docs
   def page_title = "Dialog"
+
   def view_template
     component = "Dialog"
 

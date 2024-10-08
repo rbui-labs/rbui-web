@@ -2,6 +2,7 @@
 
 class Views::Docs::Input < Components::Layouts::Docs
   def page_title = "Input"
+
   def view_template
     component = "Input"
 
