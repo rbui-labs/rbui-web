@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
-class Docs::AlertDialogView < ApplicationView
+class Views::Docs::AlertDialog < Components::Layouts::Docs
+  def page_title = "Alert"
+
   def view_template
     component = "AlertDialog"
+
     div(class: "max-w-2xl mx-auto w-full py-10 space-y-10") do
       render Docs::Header.new(title: "Alert Dialog", description: "A modal dialog that interrupts the user with important content and expects a response.")
 

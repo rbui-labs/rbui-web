@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Docs::CalendarView < ApplicationView
+class Views::Docs::Calendar < Components::Layouts::Docs
+  def page_title = "Calendar"
+
   def view_template
     component = "Calendar"
     div(class: "max-w-2xl mx-auto w-full py-10 space-y-10") do

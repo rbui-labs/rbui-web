@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Docs::AspectRatioView < ApplicationView
+class Views::Docs::AspectRatio < Components::Layouts::Docs
+  def page_title = "Aspect Ratio"
+
   def view_template
     component = "AspectRatio"
     div(class: "max-w-2xl mx-auto w-full py-10 space-y-10") do

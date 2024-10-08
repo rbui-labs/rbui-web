@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Docs::CheckboxView < ApplicationView
+class Views::Docs::Checkbox < Components::Layouts::Docs
+  def page_title = "Checkbox"
+
   def view_template
     component = "Checkbox"
     div(class: "max-w-2xl mx-auto w-full py-10 space-y-10") do
