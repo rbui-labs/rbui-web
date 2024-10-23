@@ -13,7 +13,7 @@ class Docs::AccordionView < ApplicationView
         @@code = <<~RUBY
           div(class: "w-full") do
               Accordion do
-                AccordionItem(default: open) do
+                AccordionItem(open: true) do
                   AccordionTrigger do
                     p(class: "font-medium") { "What is PhlexUI?" }
                     AccordionIcon()
