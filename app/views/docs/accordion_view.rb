@@ -13,7 +13,7 @@ class Docs::AccordionView < ApplicationView
         @@code = <<~RUBY
           div(class: "w-full") do
               Accordion do
-                AccordionItem do
+                AccordionItem(default: open) do
                   AccordionTrigger do
                     p(class: "font-medium") { "What is PhlexUI?" }
                     AccordionIcon()
@@ -37,27 +37,6 @@ class Docs::AccordionView < ApplicationView
                   AccordionContent do
                     p(class: "text-sm pb-4") do
                       "Yes, PhlexUI is pure Ruby and works great with Rails. It's a Ruby gem that you can install into your Rails app."
-                    end
-                  end
-                end
-              end
-            end
-        RUBY
-      end
-
-      render Docs::VisualCodeExample.new(title: "Default Open", context: self) do
-        @@code = <<~RUBY
-          div(class: "w-full") do
-              Accordion do
-                AccordionItem(open: true) do
-                  AccordionTrigger do
-                    p(class: "font-medium") { "What is PhlexUI?" }
-                    AccordionIcon()
-                  end
-
-                  AccordionContent do
-                    p(class: "text-sm pb-4") do
-                      "PhlexUI is a UI component library for Ruby devs who want to build better, faster."
                     end
                   end
                 end
