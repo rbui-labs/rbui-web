@@ -45,6 +45,27 @@ class Docs::AccordionView < ApplicationView
         RUBY
       end
 
+      render Docs::VisualCodeExample.new(title: "Default Open", context: self) do
+        @@code = <<~RUBY
+          div(class: "w-full") do
+              Accordion do
+                AccordionItem(open: true) do
+                  AccordionTrigger do
+                    p(class: "font-medium") { "What is PhlexUI?" }
+                    AccordionIcon()
+                  end
+
+                  AccordionContent do
+                    p(class: "text-sm pb-4") do
+                      "PhlexUI is a UI component library for Ruby devs who want to build better, faster."
+                    end
+                  end
+                end
+              end
+            end
+        RUBY
+      end
+
       render Docs::ComponentsTable.new(component_references(component, @@code), component_files(component))
     end
   end
